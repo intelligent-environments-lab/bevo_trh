@@ -13,6 +13,7 @@ sensor = adafruit_sht31d.SHT31D(i2c)
 loopcount = 0
 
 with open('Sensor_data.csv', mode='w') as J:
+ data_writer = csv.writer(J, delimiter=',')
  data_writer.writerow(['Time','Temperature', 'Relative Humidity'])
 
  while True:
@@ -21,8 +22,7 @@ with open('Sensor_data.csv', mode='w') as J:
      loopcount += 1
      time.sleep(10)
      
-     data_writer = csv.writer(J, delimiter=',')
-     data_writer.writerow([datetime.now(), sensor.temperature,sensor.relative_humidity]）
+     data_writer.writerow([datetime.now(), sensor.temperature,sensor.relative_humidity])
 
     # every 10 passes turn on the heater for 1 second
     #if loopcount == 10:
