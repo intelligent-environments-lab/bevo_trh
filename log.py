@@ -101,19 +101,16 @@ def write_csv(key, date, data_header, data):
 				csv_dict_writer = csv.DictWriter(data_file, fieldnames=data_header)
 				csv_dict_writer.writeheader()
 				csv_dict_writer.writerows(data)
-				if verbose:
-					print('Wrote data for first time to:', filename)
+				print('Wrote data for first time to:', filename)
 		else:
 			# Append to already existing file
 			with open(filename, mode='a') as data_file:
 				csv_dict_writer = csv.DictWriter(data_file, fieldnames=data_header)
 				csv_dict_writer.writerows(data)
-				if verbose:
-					print('Appended data to:', filename)
+				print('Appended data to:', filename)
 	except Exception as e:
 		traceback.format_exc()
-		if verbose:
-			print(type(e).__name__ + ': ' + str(e))
+		print(type(e).__name__ + ': ' + str(e))
 
 def main():
 	'''
@@ -139,6 +136,8 @@ def main():
 				sht_count += 1
 				for x in sht_data_old:
 					sht_data_old[x] += sht_data_new[x]
+					
+			time.sleep(1)
 
 		for x in sht_data_old:
 			try:
