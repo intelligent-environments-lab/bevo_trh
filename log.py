@@ -12,16 +12,9 @@ import csv
 import datetime
 import os
 import traceback
-import logging
-import smtplib, ssl
-import binascii
 
 # Import sensor-specific libraries
-import serial
-import dgs
-import adafruit_sgp30
-import adafruit_tsl2591
-#import adafruit_tsl2561
+import adafruit_sht31d
 from board import SCL, SDA
 from busio import I2C
 
